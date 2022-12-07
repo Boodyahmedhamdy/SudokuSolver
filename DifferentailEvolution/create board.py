@@ -146,5 +146,11 @@ def printBoard(board, emptySymbol="*"):
 board = createBoard()
 printBoard(board)
 
+# Testing get positions
+savedPositions = getSavedPositions(board)
+for x in range(9):
+    for y in range(9):
+        if (x, y) not in savedPositions:
+            board[x][y] = random.randint(1, 9)
 # print(np.random.randint(low=1, high=9, size=(9, 9)))
 
