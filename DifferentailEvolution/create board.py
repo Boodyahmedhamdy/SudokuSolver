@@ -126,8 +126,8 @@ def getSavedPositions(board):
     """
     savedPositions = set()
 
-    for row in board:
-        for col in row:
+    for row in range(9):
+        for col in range(9):
             if board[row][col] != 0:
                 savedPositions.add((row, col))
 
