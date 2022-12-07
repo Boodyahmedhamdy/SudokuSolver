@@ -117,7 +117,7 @@ def isAvailableToAddNumberInBlock(board, number, rowIndex, columnIndex):
 
     return True
 
-
+# get saved positions in initial board
 def getSavedPositions(board):
     """
 
