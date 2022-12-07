@@ -118,6 +118,21 @@ def isAvailableToAddNumberInBlock(board, number, rowIndex, columnIndex):
     return True
 
 
+def getSavedPositions(board):
+    """
+
+    :param board: must be the initial board
+    :return: set of saved positions which means all another
+    """
+    savedPositions = set()
+
+    for row in board:
+        for col in row:
+            if board[row][col] != 0:
+                savedPositions.add((row, col))
+
+    return savedPositions
+
 # printing the board
 def printBoard(board, emptySymbol="*"):
     """
