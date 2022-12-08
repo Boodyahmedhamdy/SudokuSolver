@@ -18,13 +18,27 @@ savedPositions = {(1, 2), (3, 1)}
 
 
 def mutatePopulation(population, mutationRate = 0.2):
+    """
+    mutate a list of individuals 'population'
 
+    :param population: list of individuals
+    :param mutationRate: Not Used Yet
+    """
     for individual in population:
         mutateIndividual(individual)
 
 
 def mutateIndividualAndReturnBetterOne(individual, numberOfMutaitons = 3):
+    """
+    mutates given individual number of times default=3
+    Note: individual is passed by reference so no need to return any value
+    but it was designed to return another individual 'Design Purpose'
 
+    :param individual: single solution from a population of solutions
+    :param numberOfMutaitons: how many times the mutation process will
+     happen (swapping rows and columns)
+    :return: better individual
+    """
     betterIndividual = individual
 
     for _ in range(numberOfMutaitons):
@@ -36,6 +50,16 @@ def mutateIndividualAndReturnBetterOne(individual, numberOfMutaitons = 3):
 
 
 def mutateIndividual(individual, numberOfMutations  = 3):
+    """
+    mutates given individual number of times default=3
+    Note: individual is passed by reference so no need to return any value
+
+
+    :param individual: single solution from a population of solutions
+    :param numberOfMutations: how many times the mutation process will
+     happen (swapping rows and columns)
+    """
+
     for _ in range(numberOfMutations):
         randomIndex = random.randint(0, 8)
         swapRow(individual, randomIndex)
@@ -43,6 +67,12 @@ def mutateIndividual(individual, numberOfMutations  = 3):
 
 
 def swapRow(board, rowIndex):
+    """
+    swap two random numbers from a given row index in the board
+
+    :param board: board to work on
+    :param columnIndex: the column would be swapped
+    """
 
     row = board[rowIndex]
 
@@ -57,7 +87,12 @@ def swapRow(board, rowIndex):
 
 
 def swapColumn(board, columnIndex):
+    """
+    swap two random numbers from a given column index in the board
 
+    :param board: board to work on
+    :param columnIndex: the column would be swapped
+    """
     column = board.T[columnIndex]
 
     firstRandomIndex = random.randint(0, 8)
