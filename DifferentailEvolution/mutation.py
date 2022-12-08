@@ -14,13 +14,16 @@ mainBoard = np.array(
      [7, 7, 1, 8, 9, 6, 7, 9, 9]]
 )
 
+savedPositions = {(1, 2), (3, 1)}
 
 
 def mutatePopulation(population, mutationRate = 0.2):
 
-    pass
+    for individual in population:
+        mutateIndividual(individual)
 
-def mutateIndividual(individual, numberOfMutaitons = 3):
+
+def mutateIndividualAndReturnBetterOne(individual, numberOfMutaitons = 3):
 
     betterIndividual = individual
 
@@ -32,13 +35,24 @@ def mutateIndividual(individual, numberOfMutaitons = 3):
     return betterIndividual
 
 
+def mutateIndividual(individual, numberOfMutations  = 3):
+    for _ in range(numberOfMutations):
+        randomIndex = random.randint(0, 8)
+        swapRow(individual, randomIndex)
+        swapColumn(individual, randomIndex)
+
+
 def swapRow(board, rowIndex):
+
     row = board[rowIndex]
 
-    firstRandomIndex = random.randint(1, 9)
-    secondRandomIndex = random.randint(1, 9)
+    firstRandomIndex = random.randint(0, 8)
+    secondRandomIndex = random.randint(0, 8)
 
-    row[firstRandomIndex], row[secondRandomIndex] =\
+    if (rowIndex, firstRandomIndex) not in savedPositions\
+            and (rowIndex, secondRandomIndex) not in savedPositions:
+
+        row[firstRandomIndex], row[secondRandomIndex] = \
         row[secondRandomIndex], row[firstRandomIndex]
 
 
@@ -46,11 +60,15 @@ def swapColumn(board, columnIndex):
 
     column = board.T[columnIndex]
 
-    firstRandomIndex = random.randint(1, 9)
-    secondRandomIndex = random.randint(1, 9)
+    firstRandomIndex = random.randint(0, 8)
+    secondRandomIndex = random.randint(0, 8)
 
-    column[firstRandomIndex], column[secondRandomIndex] = \
+    if (firstRandomIndex, columnIndex) not in savedPositions \
+            and (secondRandomIndex, columnIndex) not in savedPositions:
+
+        column[firstRandomIndex], column[secondRandomIndex] = \
         column[secondRandomIndex], column[firstRandomIndex]
+
 
 
 print(mainBoard)
