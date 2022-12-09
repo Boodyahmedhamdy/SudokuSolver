@@ -1,6 +1,14 @@
 import numpy as np
 import random
 
+"""
+begin phase to create a ready board
+
+@author: Abdelrahman
+
+"""
+
+
 # creating empty board
 def createEmptyBoard():
     """
@@ -16,7 +24,7 @@ def createEmptyBoard():
 
 
 # create initial board
-def createBoard(cellsNumberToBeFilled = 17):
+def createBoard(cellsNumberToBeFilled=17):
     """
 
     :param cellsNumberToBeFilled: number of cells to be filled with random numbers as a start -- default 17
@@ -32,7 +40,6 @@ def createBoard(cellsNumberToBeFilled = 17):
 
         if isAvailableToAddNumberInBoard(board, randomNumber,
                                          randomRowIndex, randomColumnIndex):
-
             board[randomRowIndex][randomColumnIndex] = randomNumber
             cellsNumberToBeFilled -= 1
 
@@ -117,6 +124,7 @@ def isAvailableToAddNumberInBlock(board, number, rowIndex, columnIndex):
 
     return True
 
+
 # get saved positions in initial board
 def getSavedPositions(board):
     """
@@ -132,6 +140,7 @@ def getSavedPositions(board):
                 savedPositions.add((row, col))
 
     return savedPositions
+
 
 # printing the board
 def printBoard(board, emptySymbol="*"):
@@ -153,4 +162,3 @@ for x in range(9):
         if (x, y) not in savedPositions:
             board[x][y] = random.randint(1, 9)
 # print(np.random.randint(low=1, high=9, size=(9, 9)))
-
