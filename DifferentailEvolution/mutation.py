@@ -1,6 +1,12 @@
 import numpy as np
 import random
 
+"""
+Mutation related functions
+
+@author: Abdelrahman
+
+"""
 
 mainBoard = np.array(
     [[1, 9, 3, 9, 3, 8, 9, 9, 6],

@@ -1,6 +1,13 @@
 import numpy as np
 import random
 
+"""
+begin phase to create a ready board
+
+@author: Abdelrahman
+
+"""
+
 # creating empty board
 def createEmptyBoard():
     """
