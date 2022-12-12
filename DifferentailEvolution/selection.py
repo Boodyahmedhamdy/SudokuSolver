@@ -15,3 +15,10 @@ def selectParents(population,fitness_vals):
     selected_population = population[selected_indices]
     return selected_population
 
+
+
+# needed in work
+def selectParentsFromPopulation(population, sortedIndexes, selectionRate = 0.5):
+    numberOfParents = int(len(population) * selectionRate)
+    parents = population[:numberOfParents-1]
+    return parents
