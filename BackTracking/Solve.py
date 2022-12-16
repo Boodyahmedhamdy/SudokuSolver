@@ -134,17 +134,25 @@ def getSavedPositions(board):
     return savedPositions
 
 # printing the board
-def printBoard(board, emptySymbol="*"):
+def printBoard(board):
     """
     :param board: 2d numpy array to represent the sudoku board
     :param emptySymbol: what to put in empty cells instead of zero -- default *
     """
-    print(str(board).replace("0", emptySymbol))
+    print("\n-------------------------")
 
+    for i in range(9):
+        for j in range(9):
+            if board[i][j] is not None:
+                if j == 0:
+                    print("|", end=" ")
+                print(f"{board[i][j]} ", end="")
+            if (j + 1) % 3 == 0:
+                print("|", end=" ")
+        if (i + 1) % 3 == 0:
+            print("\n-------------------------", end=" ")
+        print()
 
-
-
-# print(np.random.randint(low=1, high=9, size=(9, 9)))
 
 def findNextEmpty(board):
     """
@@ -173,12 +181,12 @@ def solveBoard(board):
     for number in range(1, 10):
         if isAvailableToAddNumberInBoard(board, number, rowIndex, columnIndex):
             board[rowIndex][columnIndex] = number
-            
             if solveBoard(board):
                 return True
         board[rowIndex][columnIndex] = 0 
     
-    return False                   
+    return False      
+
 
 # Test
 if __name__=='__main__':
