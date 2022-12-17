@@ -150,10 +150,28 @@ def printBoard(board, emptySymbol="*"):
     """
     print(str(board).replace("0", emptySymbol))
 
+def printRealBoard(board):
+    print("\n-------------------------")
+
+    for i in range(9):
+        for j in range(9):
+            if board[i][j] is not None:
+                if j == 0:
+                    print("|", end=" ")
+                print(f"{board[i][j]} ", end="")
+            if (j + 1) % 3 == 0:
+                print("|", end=" ")
+        if (i + 1) % 3 == 0:
+            print("\n-------------------------", end=" ")
+        print()
+
 
 # Test
 board = createBoard()
 printBoard(board)
+printRealBoard(board)
+
+
 
 # Testing get positions
 savedPositions = getSavedPositions(board)
